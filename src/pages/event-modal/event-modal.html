@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Event Details</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="close()">
+          <ion-icon name="close"> </ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Data</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat="DD/MM/YYYY HH:mm" type="text" [(ngModel)]="event.startTime" [min]="minDate" [max]="maxDate" monthShortNames='jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez' doneText="Ok" cancelText="Cancelar"></ion-datetime>
+    </ion-item>
+  </ion-list>
+  <button ion-button full icon-left (click)="save()" color="dark">
+    <ion-icon name="checkmark"></ion-icon> Add
+  </button>
+  <ion-list no-lines padding>
+    <button ion-item *ngFor="let date of dates" end>
+      <ion-badge color="dark">{{ date.startTime }} até {{ date.endTime }}</ion-badge>
+    </button> 
+  </ion-list>
+</ion-content>
